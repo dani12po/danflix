@@ -21,6 +21,10 @@ export default function Home() {
     loadContent();
   }, []);
 
+  const handleFilmClick = (film: Film) => {
+    router.push(`/watch/${film.id}`);
+  };
+
   const loadContent = async () => {
     try {
       setLoading(true);
@@ -115,6 +119,7 @@ export default function Home() {
                     <FilmCard
                       key={film.id}
                       film={film}
+                      onClick={handleFilmClick}
                     />
                   ))}
                 </div>
@@ -129,6 +134,7 @@ export default function Home() {
                     <FilmCard
                       key={film.id}
                       film={film}
+                      onClick={handleFilmClick}
                     />
                   ))}
                 </div>
@@ -143,6 +149,7 @@ export default function Home() {
                     <FilmCard
                       key={film.id}
                       film={film}
+                      onClick={handleFilmClick}
                     />
                   ))}
                 </div>
@@ -157,6 +164,7 @@ export default function Home() {
                     <FilmCard
                       key={film.id}
                       film={film}
+                      onClick={handleFilmClick}
                     />
                   ))}
                 </div>

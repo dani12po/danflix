@@ -122,12 +122,14 @@ export default function Navigation({ onSearch }: NavigationProps) {
           {/* User Menu */}
           <div className="hidden lg:flex items-center space-x-4">
             <button 
+              onClick={() => router.push('/profile')}
               className="p-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 z-button cursor-pointer min-h-[44px] min-w-[44px]"
               aria-label="User profile"
             >
               <User className="w-5 h-5" />
             </button>
             <button 
+              onClick={() => router.push('/settings')}
               className="p-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 z-button cursor-pointer min-h-[44px] min-w-[44px]"
               aria-label="Settings"
             >
@@ -222,6 +224,10 @@ export default function Navigation({ onSearch }: NavigationProps) {
               <div className="p-4 border-t border-white/10">
                 <div className="space-y-2">
                   <button 
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      router.push('/profile');
+                    }}
                     className="w-full flex items-center space-x-3 px-4 py-3 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 z-button cursor-pointer min-h-[44px]"
                     aria-label="User profile"
                   >
@@ -229,6 +235,10 @@ export default function Navigation({ onSearch }: NavigationProps) {
                     <span>Profile</span>
                   </button>
                   <button 
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      router.push('/settings');
+                    }}
                     className="w-full flex items-center space-x-3 px-4 py-3 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 z-button cursor-pointer min-h-[44px]"
                     aria-label="Settings"
                   >
@@ -236,6 +246,11 @@ export default function Navigation({ onSearch }: NavigationProps) {
                     <span>Settings</span>
                   </button>
                   <button 
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      // Handle logout logic here
+                      console.log('Logout clicked');
+                    }}
                     className="w-full flex items-center space-x-3 px-4 py-3 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 z-button cursor-pointer min-h-[44px]"
                     aria-label="Logout"
                   >
