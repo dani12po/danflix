@@ -1171,6 +1171,7 @@ body {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   height: 64px;
   transition: all 0.3s ease;
+  overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
 .header-content {
@@ -1181,11 +1182,30 @@ body {
   padding: 0 1rem;
   max-width: 1440px;
   margin: 0 auto;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+@media (min-width: 640px) {
+  .header-content {
+    padding: 0 1.5rem;
+  }
 }
 
 @media (min-width: 768px) {
   .header-content {
     padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .header-content {
+    padding: 0 2.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .header-content {
+    padding: 0 3rem;
   }
 }
 
@@ -1310,24 +1330,156 @@ body {
   }
 }
 
-/* ===== RESPONSIVE HELPERS ===== */
+/* ===== MOBILE RESPONSIVE IMPROVEMENTS ===== */
 
-.mobile-only {
-  display: block;
-}
-
-.desktop-only {
-  display: none;
-}
-
-@media (min-width: 1024px) {
-  .mobile-only {
-    display: none;
+/* Mobile-specific container */
+@media (max-width: 639px) {
+  .mobile-container {
+    width: 100%;
+    padding: 0 0.75rem;
+    overflow-x: hidden;
+    box-sizing: border-box;
   }
   
-  .desktop-only {
-    display: block;
+  .main-content {
+    padding-top: 56px; /* Smaller header for mobile */
+    overflow-x: hidden;
   }
+  
+  .hero-section {
+    min-height: calc(100vh - 56px);
+    padding: 0 0.75rem;
+    overflow-x: hidden;
+  }
+  
+  .hero-content {
+    padding: 0 0.75rem;
+    overflow-x: hidden;
+  }
+  
+  .content-section {
+    padding: 2rem 0;
+    overflow-x: hidden;
+  }
+  
+  .film-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    padding: 0 0.75rem;
+    overflow-x: hidden;
+  }
+  
+  .section-header {
+    padding: 0 0.75rem;
+    margin-bottom: 2rem;
+    overflow-x: hidden;
+  }
+  
+  /* Prevent text overflow */
+  h1, h2, h3, h4, h5, h6, p, span {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+  }
+  
+  /* Ensure buttons stay within viewport */
+  button {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Mobile navigation improvements */
+  .header {
+    height: 56px;
+  }
+  
+  .header-content {
+    padding: 0 0.75rem;
+  }
+}
+
+/* Tablet improvements */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .tablet-container {
+    width: 100%;
+    padding: 0 1.5rem;
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+  
+  .main-content {
+    overflow-x: hidden;
+  }
+  
+  .hero-section {
+    padding: 0 1.5rem;
+    overflow-x: hidden;
+  }
+  
+  .content-section {
+    overflow-x: hidden;
+  }
+  
+  .film-grid {
+    padding: 0 1.5rem;
+    overflow-x: hidden;
+  }
+}
+
+/* Desktop grid improvements */
+@media (min-width: 1024px) {
+  .desktop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+  }
+}
+
+/* Prevent horizontal overflow globally */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Ensure all containers respect viewport */
+.responsive-container,
+.container,
+.container-wide,
+.main-content,
+.hero-section,
+.content-section,
+.film-grid {
+  overflow-x: hidden;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Fix any potential overflow from images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Fix any potential overflow from videos */
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Ensure text doesn't cause overflow */
+.text-overflow-fix {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 /* ===== INTERACTIVE ELEMENTS DEBUG ===== */

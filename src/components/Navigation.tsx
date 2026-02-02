@@ -64,13 +64,13 @@ export default function Navigation({ onSearch }: NavigationProps) {
           {/* Logo */}
           <Link 
             href="/"
-            className="flex items-center gap-2 group cursor-pointer p-2 rounded-lg hover:bg-white/10 transition-all min-h-[44px] min-w-[44px]"
+            className="flex items-center gap-2 group cursor-pointer p-2 rounded-lg hover:bg-white/10 transition-all min-h-[44px] min-w-[44px] text-overflow-fix"
             aria-label="StreamFlix Home"
           >
             <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0">
               <Film className="w-5 h-5 text-white" />
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent hidden sm:block">
+            <span className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent hidden sm:block whitespace-nowrap">
               StreamFlix
             </span>
           </Link>
@@ -84,7 +84,7 @@ export default function Navigation({ onSearch }: NavigationProps) {
                   key={item.href}
                   href={item.href}
                   onClick={() => handleNavClick(item.href)}
-                  className={`flex items-center gap-2 px-4 py-3 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] min-w-[44px] relative z-10 ${
+                  className={`flex items-center gap-2 px-4 py-3 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] min-w-[44px] relative z-10 whitespace-nowrap ${
                     isActive(item.href)
                       ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300'
                       : 'text-gray-300 hover:text-white hover:bg-white/10'
@@ -99,13 +99,13 @@ export default function Navigation({ onSearch }: NavigationProps) {
             })}
           </nav>
 
-          {/* Search Bar */}
-          <div className="hidden md:block flex-1 max-w-md mx-8">
+          {/* Search Bar - Hidden on small mobile */}
+          <div className="hidden md:block flex-1 max-w-md mx-4 lg:mx-8">
             <form onSubmit={handleSearch} className="relative" role="search">
               <div className={`relative transition-all duration-300 ${
-                isSearchFocused ? 'scale-105' : 'scale-100'
+                isSearchFocused ? 'scale-105' : ''
               }`}>
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 z-10" aria-hidden="true" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 z-10" />
                 <input
                   type="text"
                   value={searchQuery}
@@ -113,7 +113,7 @@ export default function Navigation({ onSearch }: NavigationProps) {
                   onFocus={() => setIsSearchFocused(true)}
                   onBlur={() => setIsSearchFocused(false)}
                   placeholder="Search movies, series, anime..."
-                  className="w-full pl-10 pr-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:bg-white/20 transition-all duration-200 relative z-10 min-h-[44px]"
+                  className="w-full pl-10 pr-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:bg-white/20 transition-all duration-200 relative z-10 min-h-[44px] text-overflow-fix"
                   aria-label="Search content"
                 />
               </div>
@@ -156,112 +156,111 @@ export default function Navigation({ onSearch }: NavigationProps) {
           <div 
             className="absolute inset-0 bg-black/80 transition-opacity duration-300" 
             onClick={() => setIsMenuOpen(false)}
-            aria-label="Close mobile menu overlay"
+            aria-label="Close mobile menu"
           />
-          
-          <div className="absolute top-0 right-0 h-full w-80 glass-dark transform transition-transform duration-300">
-            <div className="flex flex-col h-full">
-              {/* Mobile Menu Header */}
-              <div className="flex items-center justify-between p-4 border-b border-white/10">
-                <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
-                    <Film className="w-5 h-5 text-white" />
-                  </div>
-                  <span className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                    StreamFlix
-                  </span>
+          <div className="absolute top-0 right-0 h-full w-80 max-w-[85vw] mobile-menu transform transition-transform duration-300 overflow-y-auto">
+            <div className="mobile-menu-header">
+              <div className="mobile-logo">
+                <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                  <Film className="w-5 h-5 text-white" />
                 </div>
-                <button
-                  onClick={() => setIsMenuOpen(false)}
-                  className="p-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 z-button cursor-pointer min-h-[44px] min-w-[44px]"
-                  aria-label="Close mobile menu"
-                >
-                  <X className="w-6 h-6" />
-                </button>
+                <span className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                  StreamFlix
+                </span>
               </div>
+              <button
+                onClick={() => setIsMenuOpen(false)}
+                className="mobile-close-button"
+                aria-label="Close menu"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
 
-              {/* Mobile Navigation Items */}
-              <nav className="flex-1 p-4 mobile-menu-overlay" role="navigation" aria-label="Mobile navigation">
-                <div className="space-y-2">
-                  {navItems.map((item) => {
-                    const Icon = item.icon;
-                    return (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        onClick={() => {
-                          setIsMenuOpen(false);
-                          handleNavClick(item.href);
-                        }}
-                        className={`flex items-center gap-3 px-4 py-4 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] min-w-[44px] relative z-10 ${
-                          isActive(item.href)
-                            ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300'
-                            : 'text-gray-300 hover:text-white hover:bg-white/10'
-                        }`}
-                        aria-label={`Navigate to ${item.label}`}
-                        aria-current={isActive(item.href) ? 'page' : undefined}
-                      >
-                        <Icon className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
-                        <span className="font-medium">{item.label}</span>
-                      </Link>
-                    );
-                  })}
-                </div>
-              </nav>
+            <nav className="mobile-nav" role="navigation" aria-label="Mobile navigation">
+              <div className="space-y-2">
+                {navItems.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => {
+                        setIsMenuOpen(false);
+                        handleNavClick(item.href);
+                      }}
+                      className={`flex items-center gap-3 px-4 py-4 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] min-w-[44px] relative z-10 whitespace-nowrap ${
+                        isActive(item.href)
+                          ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300'
+                          : 'text-gray-300 hover:text-white hover:bg-white/10'
+                      }`}
+                      aria-label={`Navigate to ${item.label}`}
+                      aria-current={isActive(item.href) ? 'page' : undefined}
+                    >
+                      <Icon className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+                      <span className="font-medium">{item.label}</span>
+                    </Link>
+                  );
+                })}
+              </div>
+            </nav>
 
-              {/* Mobile Search */}
-              <div className="p-4 border-t border-white/10">
-                <form onSubmit={handleSearch} className="relative" role="search">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 z-10" aria-hidden="true" />
+            {/* Mobile Search */}
+            <div className="mobile-search">
+              <form onSubmit={handleSearch} className="relative" role="search">
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 z-10" />
                   <input
                     type="text"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Search..."
-                    className="w-full pl-10 pr-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:bg-white/20 transition-all duration-200 relative z-10 min-h-[44px]"
+                    onFocus={() => setIsSearchFocused(true)}
+                    onBlur={() => setIsSearchFocused(false)}
+                    placeholder="Search movies, series, anime..."
+                    className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:bg-white/20 transition-all duration-200 relative z-10 min-h-[44px] text-overflow-fix"
                     aria-label="Search content"
                   />
-                </form>
-              </div>
-
-              {/* Mobile User Menu */}
-              <div className="p-4 border-t border-white/10 mobile-menu-overlay">
-                <div className="space-y-2">
-                  <button 
-                    onClick={() => {
-                      setIsMenuOpen(false);
-                      router.push('/profile');
-                    }}
-                    className="w-full flex items-center gap-3 px-4 py-4 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] relative z-10"
-                    aria-label="User profile"
-                  >
-                    <User className="w-5 h-5 flex-shrink-0" />
-                    <span>Profile</span>
-                  </button>
-                  <button 
-                    onClick={() => {
-                      setIsMenuOpen(false);
-                      router.push('/settings');
-                    }}
-                    className="w-full flex items-center gap-3 px-4 py-4 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] relative z-10"
-                    aria-label="Settings"
-                  >
-                    <Settings className="w-5 h-5 flex-shrink-0" />
-                    <span>Settings</span>
-                  </button>
-                  <button 
-                    onClick={() => {
-                      setIsMenuOpen(false);
-                      // Handle logout logic here
-                      console.log('Logout clicked');
-                    }}
-                    className="w-full flex items-center gap-3 px-4 py-4 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] relative z-10"
-                    aria-label="Logout"
-                  >
-                    <LogOut className="w-5 h-5 flex-shrink-0" />
-                    <span>Logout</span>
-                  </button>
                 </div>
+              </form>
+            </div>
+
+            {/* Mobile User Menu */}
+            <div className="mobile-user-menu">
+              <div className="space-y-2">
+                <button 
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    router.push('/profile');
+                  }}
+                  className="w-full flex items-center gap-3 px-4 py-4 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] relative z-10 whitespace-nowrap"
+                  aria-label="User profile"
+                >
+                  <User className="w-5 h-5 flex-shrink-0" />
+                  <span>Profile</span>
+                </button>
+                <button 
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    router.push('/settings');
+                  }}
+                  className="w-full flex items-center gap-3 px-4 py-4 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] relative z-10 whitespace-nowrap"
+                  aria-label="Settings"
+                >
+                  <Settings className="w-5 h-5 flex-shrink-0" />
+                  <span>Settings</span>
+                </button>
+                <button 
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    // Handle logout logic here
+                    console.log('Logout clicked');
+                  }}
+                  className="w-full flex items-center gap-3 px-4 py-4 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] relative z-10 whitespace-nowrap"
+                  aria-label="Logout"
+                >
+                  <LogOut className="w-5 h-5 flex-shrink-0" />
+                  <span>Logout</span>
+                </button>
               </div>
             </div>
           </div>
