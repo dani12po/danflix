@@ -29,7 +29,16 @@ export default function FilmCard({ film, onClick, index = 0 }: FilmCardProps) {
       }}
       whileTap={{ scale: 0.98 }}
       onClick={handleClick}
-      className="group relative cursor-pointer"
+      className="group relative cursor-pointer film-card"
+      role="button"
+      tabIndex={0}
+      aria-label={`Watch ${film.title}`}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handleClick();
+        }
+      }}
     >
       {/* Card Container */}
       <div className="relative overflow-hidden rounded-xl bg-slate-800 border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300">

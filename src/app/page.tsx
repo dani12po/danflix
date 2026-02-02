@@ -86,7 +86,9 @@ export default function Home() {
                   router.push('/movies');
                 }
               }}
-              className="bg-purple-600 hover:bg-purple-700 px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-colors text-lg min-h-[44px] md:min-h-[48px] cursor-pointer z-button"
+              className="bg-purple-600 hover:bg-purple-700 px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold transition-colors text-lg min-h-[44px] md:min-h-[48px] cursor-pointer relative z-10"
+              role="button"
+              aria-label="Start watching movies and series"
             >
               Start Watching
             </motion.button>
@@ -105,7 +107,9 @@ export default function Home() {
               <p>{error}</p>
               <button 
                 onClick={loadContent}
-                className="mt-4 bg-purple-600 hover:bg-purple-700 px-6 py-2 rounded-full transition-colors z-button"
+                className="mt-4 bg-purple-600 hover:bg-purple-700 px-6 py-2 rounded-full transition-colors cursor-pointer relative z-10"
+                role="button"
+                aria-label="Try loading content again"
               >
                 Try Again
               </button>

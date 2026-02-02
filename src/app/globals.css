@@ -1330,7 +1330,109 @@ body {
   }
 }
 
-/* ===== CLEAN UP OLD CSS ===== */
+/* ===== INTERACTIVE ELEMENTS DEBUG ===== */
+
+/* Ensure all buttons are clickable */
+button, a, [role="button"], [role="link"] {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  position: relative;
+  z-index: inherit;
+}
+
+/* Fix overlay issues */
+.interactive-element {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  position: relative;
+  z-index: 10;
+}
+
+/* Ensure buttons are above other elements */
+.z-button {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  position: relative;
+}
+
+/* Fix hover states */
+button:hover, a:hover, [role="button"]:hover, [role="link"]:hover {
+  pointer-events: auto !important;
+}
+
+/* Fix active states */
+button:active, a:active, [role="button"]:active, [role="link"]:active {
+  pointer-events: auto !important;
+}
+
+/* Fix focus states */
+button:focus, a:focus, [role="button"]:focus, [role="link"]:focus {
+  pointer-events: auto !important;
+  outline: 2px solid rgba(139, 92, 246, 0.5);
+  outline-offset: 2px;
+}
+
+/* Fix disabled states */
+button:disabled, a.disabled {
+  pointer-events: none !important;
+  cursor: not-allowed !important;
+  opacity: 0.5;
+}
+
+/* Ensure clickable areas are accessible */
+.clickable-area {
+  min-height: 44px;
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+
+/* Fix overlay transparency issues */
+.overlay-fix {
+  pointer-events: none !important;
+}
+
+.overlay-fix > * {
+  pointer-events: auto !important;
+}
+
+/* Fix film card clickability */
+.film-card {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+
+.film-card * {
+  pointer-events: none !important;
+}
+
+.film-card:hover,
+.film-card:focus {
+  pointer-events: auto !important;
+}
+
+/* Fix navigation clickability */
+.header-content {
+  pointer-events: auto !important;
+}
+
+.header-content > * {
+  pointer-events: auto !important;
+}
+
+/* Fix mobile menu clickability */
+.mobile-menu-overlay {
+  pointer-events: auto !important;
+}
+
+.mobile-menu-overlay > * {
+  pointer-events: auto !important;
+}
+
+/* ===== INTERACTIVE ELEMENTS DEBUG ===== */
 
 /* Base reset for consistency */
 *,

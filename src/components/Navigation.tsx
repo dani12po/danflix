@@ -76,7 +76,7 @@ export default function Navigation({ onSearch }: NavigationProps) {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8" role="navigation" aria-label="Main navigation">
+          <nav className="hidden lg:flex items-center space-x-8 z-button" role="navigation" aria-label="Main navigation">
             {navItems.map((item) => {
               const Icon = item.icon;
               return (
@@ -84,7 +84,7 @@ export default function Navigation({ onSearch }: NavigationProps) {
                   key={item.href}
                   href={item.href}
                   onClick={() => handleNavClick(item.href)}
-                  className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-200 z-button cursor-pointer min-h-[44px] min-w-[44px] ${
+                  className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] min-w-[44px] relative z-10 ${
                     isActive(item.href)
                       ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300'
                       : 'text-gray-300 hover:text-white hover:bg-white/10'
@@ -121,17 +121,17 @@ export default function Navigation({ onSearch }: NavigationProps) {
           </div>
 
           {/* User Menu */}
-          <div className="hidden lg:flex items-center space-x-4">
+          <div className="hidden lg:flex items-center space-x-4 z-button">
             <button 
               onClick={() => router.push('/profile')}
-              className="p-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 z-button cursor-pointer min-h-[44px] min-w-[44px]"
+              className="p-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] min-w-[44px] relative z-10"
               aria-label="User profile"
             >
               <User className="w-5 h-5" />
             </button>
             <button 
               onClick={() => router.push('/settings')}
-              className="p-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 z-button cursor-pointer min-h-[44px] min-w-[44px]"
+              className="p-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] min-w-[44px] relative z-10"
               aria-label="Settings"
             >
               <Settings className="w-5 h-5" />
@@ -141,7 +141,7 @@ export default function Navigation({ onSearch }: NavigationProps) {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 z-button cursor-pointer min-h-[44px] min-w-[44px]"
+            className="lg:hidden p-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] min-w-[44px] relative z-10"
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMenuOpen}
           >
@@ -181,7 +181,7 @@ export default function Navigation({ onSearch }: NavigationProps) {
               </div>
 
               {/* Mobile Navigation Items */}
-              <nav className="flex-1 p-4" role="navigation" aria-label="Mobile navigation">
+              <nav className="flex-1 p-4 mobile-menu-overlay" role="navigation" aria-label="Mobile navigation">
                 <div className="space-y-2">
                   {navItems.map((item) => {
                     const Icon = item.icon;
@@ -193,7 +193,7 @@ export default function Navigation({ onSearch }: NavigationProps) {
                           setIsMenuOpen(false);
                           handleNavClick(item.href);
                         }}
-                        className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 z-button cursor-pointer min-h-[44px] min-w-[44px] ${
+                        className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] min-w-[44px] relative z-10 ${
                           isActive(item.href)
                             ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300'
                             : 'text-gray-300 hover:text-white hover:bg-white/10'
@@ -225,14 +225,14 @@ export default function Navigation({ onSearch }: NavigationProps) {
               </div>
 
               {/* Mobile User Menu */}
-              <div className="p-4 border-t border-white/10">
+              <div className="p-4 border-t border-white/10 mobile-menu-overlay">
                 <div className="space-y-2">
                   <button 
                     onClick={() => {
                       setIsMenuOpen(false);
                       router.push('/profile');
                     }}
-                    className="w-full flex items-center space-x-3 px-4 py-3 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 z-button cursor-pointer min-h-[44px]"
+                    className="w-full flex items-center space-x-3 px-4 py-3 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] relative z-10"
                     aria-label="User profile"
                   >
                     <User className="w-5 h-5" />
@@ -243,7 +243,7 @@ export default function Navigation({ onSearch }: NavigationProps) {
                       setIsMenuOpen(false);
                       router.push('/settings');
                     }}
-                    className="w-full flex items-center space-x-3 px-4 py-3 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 z-button cursor-pointer min-h-[44px]"
+                    className="w-full flex items-center space-x-3 px-4 py-3 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] relative z-10"
                     aria-label="Settings"
                   >
                     <Settings className="w-5 h-5" />
@@ -255,7 +255,7 @@ export default function Navigation({ onSearch }: NavigationProps) {
                       // Handle logout logic here
                       console.log('Logout clicked');
                     }}
-                    className="w-full flex items-center space-x-3 px-4 py-3 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 z-button cursor-pointer min-h-[44px]"
+                    className="w-full flex items-center space-x-3 px-4 py-3 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] relative z-10"
                     aria-label="Logout"
                   >
                     <LogOut className="w-5 h-5" />
