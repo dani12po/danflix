@@ -77,7 +77,7 @@ export default function Navigation({ onSearch }: NavigationProps) {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-200 ${
+                    className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-200 relative z-50 ${
                       isActive(item.href)
                         ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300'
                         : 'text-gray-300 hover:text-white hover:bg-white/10'
@@ -91,12 +91,12 @@ export default function Navigation({ onSearch }: NavigationProps) {
             </div>
 
             {/* Search Bar */}
-            <div className="hidden md:block flex-1 max-w-md mx-8">
+            <div className="hidden md:block flex-1 max-w-md mx-8 relative z-50">
               <form onSubmit={handleSearch} className="relative">
                 <div className={`relative transition-all duration-300 ${
                   isSearchFocused ? 'scale-105' : 'scale-100'
                 }`}>
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400 z-10" />
                   <input
                     type="text"
                     value={searchQuery}
@@ -104,18 +104,18 @@ export default function Navigation({ onSearch }: NavigationProps) {
                     onFocus={() => setIsSearchFocused(true)}
                     onBlur={() => setIsSearchFocused(false)}
                     placeholder="Search movies, series, anime..."
-                    className="w-full pl-10 pr-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:bg-white/20 transition-all duration-200"
+                    className="w-full pl-10 pr-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:bg-white/20 transition-all duration-200 relative z-10"
                   />
                 </div>
               </form>
             </div>
 
             {/* User Menu */}
-            <div className="hidden lg:flex items-center space-x-4">
-              <button className="p-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200">
+            <div className="hidden lg:flex items-center space-x-4 relative z-50">
+              <button className="p-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 relative z-50">
                 <User className="w-5 h-5" />
               </button>
-              <button className="p-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200">
+              <button className="p-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 relative z-50">
                 <Settings className="w-5 h-5" />
               </button>
             </div>
@@ -123,7 +123,7 @@ export default function Navigation({ onSearch }: NavigationProps) {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden p-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200"
+              className="lg:hidden p-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 relative z-50"
             >
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>

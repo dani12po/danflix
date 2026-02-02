@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 import { ApiService } from '@/lib/api';
 import Navigation from '@/components/Navigation';
 import { Play, Star, TrendingUp, Film as FilmIcon, Tv, Gamepad2, Sparkles, Zap, Crown, ChevronRight } from 'lucide-react';
@@ -22,6 +23,7 @@ interface Film {
 }
 
 export default function Home() {
+  const router = useRouter();
   const [trending, setTrending] = useState<Film[]>([]);
   const [indonesianMovies, setIndonesianMovies] = useState<Film[]>([]);
   const [kdrama, setKdrama] = useState<Film[]>([]);
@@ -64,7 +66,7 @@ export default function Home() {
   };
 
   const handleFilmClick = (film: Film) => {
-    window.location.href = `/watch/${film.id}`;
+    router.push(`/watch/${film.id}`);
   };
 
   const stats = [
@@ -165,9 +167,10 @@ export default function Home() {
             className="hero-actions"
           >
             <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(139, 92, 246, 0.5)" }}
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="btn-primary text-lg px-8 py-4"
+              onClick={() => featuredFilm && handleFilmClick(featuredFilm)}
+              className="btn-primary text-lg px-8 py-4 relative z-50"
             >
               <Play className="w-6 h-6 mr-2" />
               Watch Now
@@ -176,7 +179,8 @@ export default function Home() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="btn-secondary text-lg px-8 py-4"
+              onClick={() => router.push('/movies')}
+              className="btn-secondary text-lg px-8 py-4 relative z-50"
             >
               <ChevronRight className="w-6 h-6 mr-2" />
               Browse Movies
