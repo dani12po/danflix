@@ -48,7 +48,7 @@ export default function FilmCard({ film, onClick, index = 0 }: FilmCardProps) {
           
           {/* Placeholder for poster */}
           <div className="w-full h-full bg-slate-700 flex items-center justify-center">
-            <Film className="w-16 h-16 text-slate-600" />
+            <Film className="w-16 h-16 text-slate-600 flex-shrink-0" />
           </div>
 
           {/* Hover Overlay */}
@@ -58,14 +58,12 @@ export default function FilmCard({ film, onClick, index = 0 }: FilmCardProps) {
             transition={{ duration: 0.3 }}
             className="absolute inset-0 bg-black/80 flex items-center justify-center"
           >
-            <motion.div
-              initial={{ scale: 0 }}
-              whileHover={{ scale: 1 }}
-              transition={{ duration: 0.3 }}
-              className="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center"
-            >
-              <Play className="w-8 h-8 text-white ml-1" />
-            </motion.div>
+            <div className="flex flex-col items-center gap-3">
+              <div className="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
+                <Play className="w-6 h-6 text-white ml-1 flex-shrink-0" />
+              </div>
+              <span className="text-white font-medium">Watch Now</span>
+            </div>
           </motion.div>
 
           {/* Rating Badge */}
@@ -84,12 +82,14 @@ export default function FilmCard({ film, onClick, index = 0 }: FilmCardProps) {
 
         {/* Film Info */}
         <div className="p-4">
-          <h3 className="font-semibold text-white mb-1 line-clamp-2 group-hover:text-purple-400 transition-colors">
-            {film.title}
-          </h3>
-          
-          <div className="flex items-center justify-between text-sm text-gray-400">
-            <div className="flex items-center space-x-1">
+          <h3 className="font-semibold text-white mb-2 line-clamp-2 leading-tight">{film.title}</h3>
+          <div className="flex items-center gap-3 text-sm text-gray-400">
+            <div className="flex items-center gap-1">
+              <Star className="w-4 h-4 text-yellow-500 flex-shrink-0" />
+              <span>{film.rating}</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <Calendar className="w-4 h-4 flex-shrink-0" />
               <Calendar className="w-3 h-3" />
               <span>{film.year}</span>
             </div>

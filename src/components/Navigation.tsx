@@ -64,10 +64,10 @@ export default function Navigation({ onSearch }: NavigationProps) {
           {/* Logo */}
           <Link 
             href="/"
-            className="flex items-center space-x-2 group cursor-pointer p-2 rounded-lg hover:bg-white/10 transition-all min-h-[44px] min-w-[44px]"
+            className="flex items-center gap-2 group cursor-pointer p-2 rounded-lg hover:bg-white/10 transition-all min-h-[44px] min-w-[44px]"
             aria-label="StreamFlix Home"
           >
-            <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+            <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0">
               <Film className="w-5 h-5 text-white" />
             </div>
             <span className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent hidden sm:block">
@@ -76,7 +76,7 @@ export default function Navigation({ onSearch }: NavigationProps) {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8 z-button" role="navigation" aria-label="Main navigation">
+          <nav className="hidden lg:flex items-center gap-8 z-button" role="navigation" aria-label="Main navigation">
             {navItems.map((item) => {
               const Icon = item.icon;
               return (
@@ -84,7 +84,7 @@ export default function Navigation({ onSearch }: NavigationProps) {
                   key={item.href}
                   href={item.href}
                   onClick={() => handleNavClick(item.href)}
-                  className={`flex items-center space-x-2 px-4 py-3 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] min-w-[44px] relative z-10 ${
+                  className={`flex items-center gap-2 px-4 py-3 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] min-w-[44px] relative z-10 ${
                     isActive(item.href)
                       ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300'
                       : 'text-gray-300 hover:text-white hover:bg-white/10'
@@ -92,7 +92,7 @@ export default function Navigation({ onSearch }: NavigationProps) {
                   aria-label={`Navigate to ${item.label}`}
                   aria-current={isActive(item.href) ? 'page' : undefined}
                 >
-                  <Icon className="w-4 h-4" aria-hidden="true" />
+                  <Icon className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
                   <span className="font-medium">{item.label}</span>
                 </Link>
               );
@@ -121,31 +121,31 @@ export default function Navigation({ onSearch }: NavigationProps) {
           </div>
 
           {/* User Menu */}
-          <div className="hidden lg:flex items-center space-x-4 z-button">
+          <div className="hidden lg:flex items-center gap-4 z-button">
             <button 
               onClick={() => router.push('/profile')}
-              className="p-3 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] min-w-[44px] relative z-10"
+              className="p-3 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] min-w-[44px] relative z-10 flex items-center justify-center"
               aria-label="User profile"
             >
-              <User className="w-5 h-5" />
+              <User className="w-5 h-5 flex-shrink-0" />
             </button>
             <button 
               onClick={() => router.push('/settings')}
-              className="p-3 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] min-w-[44px] relative z-10"
+              className="p-3 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] min-w-[44px] relative z-10 flex items-center justify-center"
               aria-label="Settings"
             >
-              <Settings className="w-5 h-5" />
+              <Settings className="w-5 h-5 flex-shrink-0" />
             </button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-3 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] min-w-[44px] relative z-10"
+            className="lg:hidden p-3 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] min-w-[44px] relative z-10 flex items-center justify-center"
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMenuOpen}
           >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMenuOpen ? <X className="w-6 h-6 flex-shrink-0" /> : <Menu className="w-6 h-6 flex-shrink-0" />}
           </button>
         </div>
       </header>
@@ -193,7 +193,7 @@ export default function Navigation({ onSearch }: NavigationProps) {
                           setIsMenuOpen(false);
                           handleNavClick(item.href);
                         }}
-                        className={`flex items-center space-x-3 px-4 py-4 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] min-w-[44px] relative z-10 ${
+                        className={`flex items-center gap-3 px-4 py-4 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] min-w-[44px] relative z-10 ${
                           isActive(item.href)
                             ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300'
                             : 'text-gray-300 hover:text-white hover:bg-white/10'
@@ -201,7 +201,7 @@ export default function Navigation({ onSearch }: NavigationProps) {
                         aria-label={`Navigate to ${item.label}`}
                         aria-current={isActive(item.href) ? 'page' : undefined}
                       >
-                        <Icon className="w-5 h-5" aria-hidden="true" />
+                        <Icon className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
                         <span className="font-medium">{item.label}</span>
                       </Link>
                     );
@@ -232,10 +232,10 @@ export default function Navigation({ onSearch }: NavigationProps) {
                       setIsMenuOpen(false);
                       router.push('/profile');
                     }}
-                    className="w-full flex items-center space-x-3 px-4 py-4 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] relative z-10"
+                    className="w-full flex items-center gap-3 px-4 py-4 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] relative z-10"
                     aria-label="User profile"
                   >
-                    <User className="w-5 h-5" />
+                    <User className="w-5 h-5 flex-shrink-0" />
                     <span>Profile</span>
                   </button>
                   <button 
@@ -243,10 +243,10 @@ export default function Navigation({ onSearch }: NavigationProps) {
                       setIsMenuOpen(false);
                       router.push('/settings');
                     }}
-                    className="w-full flex items-center space-x-3 px-4 py-4 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] relative z-10"
+                    className="w-full flex items-center gap-3 px-4 py-4 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] relative z-10"
                     aria-label="Settings"
                   >
-                    <Settings className="w-5 h-5" />
+                    <Settings className="w-5 h-5 flex-shrink-0" />
                     <span>Settings</span>
                   </button>
                   <button 
@@ -255,10 +255,10 @@ export default function Navigation({ onSearch }: NavigationProps) {
                       // Handle logout logic here
                       console.log('Logout clicked');
                     }}
-                    className="w-full flex items-center space-x-3 px-4 py-4 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] relative z-10"
+                    className="w-full flex items-center gap-3 px-4 py-4 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] relative z-10"
                     aria-label="Logout"
                   >
-                    <LogOut className="w-5 h-5" />
+                    <LogOut className="w-5 h-5 flex-shrink-0" />
                     <span>Logout</span>
                   </button>
                 </div>
