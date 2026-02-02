@@ -9,6 +9,7 @@ import FilmCard from '@/components/FilmCard';
 import { Play, Star, TrendingUp, Film as FilmIcon, Tv, Gamepad2, Sparkles, Zap, Crown, ChevronRight } from 'lucide-react';
 
 export default function Home() {
+  const router = useRouter();
   const [trending, setTrending] = useState<Film[]>([]);
   const [indonesianMovies, setIndonesianMovies] = useState<Film[]>([]);
   const [kdrama, setKdrama] = useState<Film[]>([]);

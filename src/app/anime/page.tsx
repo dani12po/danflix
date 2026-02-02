@@ -128,7 +128,7 @@ export default function AnimePage() {
           filteredAnime.sort((a, b) => a.title.localeCompare(b.title));
           break;
         case 'episodes':
-          filteredAnime.sort((a, b) => (b.episodes || 0) - (a.episodes || 0));
+          filteredAnime.sort((a, b) => (b.episodes?.length || 0) - (a.episodes?.length || 0));
           break;
       }
 
@@ -136,9 +136,9 @@ export default function AnimePage() {
       setHasMore(animeData.items.length > 0 && currentPage < 10);
 
       if (currentPage === 1) {
-        setAnime(filteredAnime);
+        setAnime(filteredAnime as Anime[]);
       } else {
-        setAnime(prev => [...prev, ...filteredAnime]);
+        setAnime(prev => [...prev, ...(filteredAnime as Anime[])]);
       }
     } catch (err) {
       setError('Failed to load anime. Please try again.');
