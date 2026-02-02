@@ -64,13 +64,13 @@ export default function Navigation({ onSearch }: NavigationProps) {
           {/* Logo */}
           <Link 
             href="/"
-            className="flex items-center space-x-2 group cursor-pointer"
+            className="flex items-center space-x-2 group cursor-pointer p-2 rounded-lg hover:bg-white/10 transition-all min-h-[44px] min-w-[44px]"
             aria-label="StreamFlix Home"
           >
             <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
               <Film className="w-5 h-5 text-white" />
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+            <span className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent hidden sm:block">
               StreamFlix
             </span>
           </Link>
@@ -84,7 +84,7 @@ export default function Navigation({ onSearch }: NavigationProps) {
                   key={item.href}
                   href={item.href}
                   onClick={() => handleNavClick(item.href)}
-                  className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] min-w-[44px] relative z-10 ${
+                  className={`flex items-center space-x-2 px-4 py-3 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] min-w-[44px] relative z-10 ${
                     isActive(item.href)
                       ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300'
                       : 'text-gray-300 hover:text-white hover:bg-white/10'
@@ -124,14 +124,14 @@ export default function Navigation({ onSearch }: NavigationProps) {
           <div className="hidden lg:flex items-center space-x-4 z-button">
             <button 
               onClick={() => router.push('/profile')}
-              className="p-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] min-w-[44px] relative z-10"
+              className="p-3 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] min-w-[44px] relative z-10"
               aria-label="User profile"
             >
               <User className="w-5 h-5" />
             </button>
             <button 
               onClick={() => router.push('/settings')}
-              className="p-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] min-w-[44px] relative z-10"
+              className="p-3 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] min-w-[44px] relative z-10"
               aria-label="Settings"
             >
               <Settings className="w-5 h-5" />
@@ -141,7 +141,7 @@ export default function Navigation({ onSearch }: NavigationProps) {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] min-w-[44px] relative z-10"
+            className="lg:hidden p-3 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] min-w-[44px] relative z-10"
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMenuOpen}
           >
@@ -193,7 +193,7 @@ export default function Navigation({ onSearch }: NavigationProps) {
                           setIsMenuOpen(false);
                           handleNavClick(item.href);
                         }}
-                        className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] min-w-[44px] relative z-10 ${
+                        className={`flex items-center space-x-3 px-4 py-4 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] min-w-[44px] relative z-10 ${
                           isActive(item.href)
                             ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300'
                             : 'text-gray-300 hover:text-white hover:bg-white/10'
@@ -232,7 +232,7 @@ export default function Navigation({ onSearch }: NavigationProps) {
                       setIsMenuOpen(false);
                       router.push('/profile');
                     }}
-                    className="w-full flex items-center space-x-3 px-4 py-3 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] relative z-10"
+                    className="w-full flex items-center space-x-3 px-4 py-4 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] relative z-10"
                     aria-label="User profile"
                   >
                     <User className="w-5 h-5" />
@@ -243,7 +243,7 @@ export default function Navigation({ onSearch }: NavigationProps) {
                       setIsMenuOpen(false);
                       router.push('/settings');
                     }}
-                    className="w-full flex items-center space-x-3 px-4 py-3 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] relative z-10"
+                    className="w-full flex items-center space-x-3 px-4 py-4 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] relative z-10"
                     aria-label="Settings"
                   >
                     <Settings className="w-5 h-5" />
@@ -255,7 +255,7 @@ export default function Navigation({ onSearch }: NavigationProps) {
                       // Handle logout logic here
                       console.log('Logout clicked');
                     }}
-                    className="w-full flex items-center space-x-3 px-4 py-3 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] relative z-10"
+                    className="w-full flex items-center space-x-3 px-4 py-4 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200 cursor-pointer min-h-[44px] relative z-10"
                     aria-label="Logout"
                   >
                     <LogOut className="w-5 h-5" />
