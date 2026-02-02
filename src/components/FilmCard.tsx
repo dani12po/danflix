@@ -40,18 +40,19 @@ export default function FilmCard({ film, onClick, index = 0 }: FilmCardProps) {
         }
       }}
     >
-      {/* Card Container */}
+      {/* Simplified Card Structure */}
       <div className="relative overflow-hidden rounded-xl bg-slate-800 border border-purple-500/20 hover:border-purple-500/40 transition-all duration-300">
-        {/* Poster Image */}
+        {/* Poster Container */}
         <div className="relative aspect-[2/3] overflow-hidden">
+          {/* Background Gradient */}
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60" />
           
-          {/* Placeholder for poster */}
+          {/* Poster Placeholder */}
           <div className="w-full h-full bg-slate-700 flex items-center justify-center">
             <Film className="w-16 h-16 text-slate-600 flex-shrink-0" />
           </div>
 
-          {/* Hover Overlay */}
+          {/* Hover Overlay - Simplified */}
           <motion.div
             initial={{ opacity: 0 }}
             whileHover={{ opacity: 1 }}
@@ -66,21 +67,20 @@ export default function FilmCard({ film, onClick, index = 0 }: FilmCardProps) {
             </div>
           </motion.div>
 
-          {/* Rating Badge */}
-          <div className="absolute top-2 right-2 bg-black/70 backdrop-blur-sm px-2 py-1 rounded-lg flex items-center space-x-1">
-            <Star className="w-3 h-3 text-yellow-400 fill-yellow-400" />
-            <span className="text-xs text-white font-semibold">{film.rating}</span>
-          </div>
-
-          {/* Type Badge */}
+          {/* Badges - Simplified */}
           <div className="absolute top-2 left-2 bg-purple-600/80 backdrop-blur-sm px-2 py-1 rounded-lg">
             <span className="text-xs text-white font-semibold uppercase">
               {film.type === 'movie' ? 'Movie' : 'TV'}
             </span>
           </div>
+          
+          <div className="absolute top-2 right-2 bg-black/70 backdrop-blur-sm px-2 py-1 rounded-lg flex items-center gap-1">
+            <Star className="w-3 h-3 text-yellow-400 fill-yellow-400" />
+            <span className="text-xs text-white font-semibold">{film.rating}</span>
+          </div>
         </div>
 
-        {/* Film Info */}
+        {/* Film Info - Simplified */}
         <div className="p-4">
           <h3 className="font-semibold text-white mb-2 line-clamp-2 leading-tight">{film.title}</h3>
           <div className="flex items-center gap-3 text-sm text-gray-400">
@@ -90,44 +90,10 @@ export default function FilmCard({ film, onClick, index = 0 }: FilmCardProps) {
             </div>
             <div className="flex items-center gap-1">
               <Calendar className="w-4 h-4 flex-shrink-0" />
-              <Calendar className="w-3 h-3" />
               <span>{film.year}</span>
             </div>
-            
-            {film.type === 'tv' && film.seasons && (
-              <div className="flex items-center space-x-1">
-                <Clock className="w-3 h-3" />
-                <span>{film.seasons} Seasons</span>
-              </div>
-            )}
           </div>
-
-          {/* Genre */}
-          {film.genre && (
-            <div className="mt-2">
-              <span className="text-xs text-purple-400 bg-purple-500/20 px-2 py-1 rounded-full">
-                {film.genre}
-              </span>
-            </div>
-          )}
         </div>
-
-        {/* Animated Border */}
-        <motion.div
-          className="absolute inset-0 rounded-xl border-2 border-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          animate={{
-            background: [
-              'linear-gradient(45deg, transparent, transparent)',
-              'linear-gradient(45deg, rgba(139, 92, 246, 0.3), transparent)',
-              'linear-gradient(45deg, transparent, transparent)',
-            ],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            repeatType: 'reverse',
-          }}
-        />
       </div>
     </motion.div>
   );
