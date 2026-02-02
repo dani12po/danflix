@@ -59,7 +59,7 @@ export default function Navigation({ onSearch }: NavigationProps) {
   return (
     <>
       {/* Navigation Bar */}
-      <header className={`header ${isScrolled ? 'glass-dark border-b border-white/10' : 'bg-transparent'}`}>
+      <header className={`header z-header ${isScrolled ? 'glass-dark border-b border-white/10' : 'bg-transparent'}`}>
         <div className="header-content">
           {/* Logo */}
           <Link 
@@ -83,6 +83,7 @@ export default function Navigation({ onSearch }: NavigationProps) {
                 <Link
                   key={item.href}
                   href={item.href}
+                  onClick={() => handleNavClick(item.href)}
                   className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-200 z-button cursor-pointer min-h-[44px] min-w-[44px] ${
                     isActive(item.href)
                       ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300'
@@ -188,7 +189,10 @@ export default function Navigation({ onSearch }: NavigationProps) {
                       <Link
                         key={item.href}
                         href={item.href}
-                        onClick={() => setIsMenuOpen(false)}
+                        onClick={() => {
+                          setIsMenuOpen(false);
+                          handleNavClick(item.href);
+                        }}
                         className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 z-button cursor-pointer min-h-[44px] min-w-[44px] ${
                           isActive(item.href)
                             ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300'
