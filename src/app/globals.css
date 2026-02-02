@@ -863,7 +863,9 @@ body {
   color: rgb(156, 163, 175);
 }
 
-/* Smooth Transitions and Hover Effects */
+/* ===== OPTIMIZED TRANSITIONS FOR SOLID UX ===== */
+
+/* Base transition system - consistent and smooth */
 * {
   transition-property: none !important;
 }
@@ -873,7 +875,7 @@ body {
   transition-property: none !important;
 }
 
-/* Enable transitions only for specific elements */
+/* Enable transitions only for interactive elements */
 .transition-enabled {
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -882,14 +884,9 @@ body {
   transition: inherit;
 }
 
-/* Prevent layout shifts */
-.layout-stable {
-  contain: layout style paint;
-}
-
-/* Smooth hover states */
+/* Smooth hover states - no jarring movements */
 .hover-smooth {
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
 }
 
@@ -897,16 +894,15 @@ body {
   transform: translateY(-1px);
 }
 
-/* Button hover effects */
+/* Button hover effects - professional and smooth */
 .button-primary {
   background: linear-gradient(135deg, rgb(168, 85, 247), rgb(236, 72, 153));
   color: white;
-  border: none;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 2rem;
   border-radius: 9999px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform, box-shadow;
   position: relative;
   overflow: hidden;
@@ -918,12 +914,12 @@ body {
   inset: 0;
   background: linear-gradient(135deg, rgb(196, 181, 253), rgb(251, 207, 232));
   opacity: 0;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.15s ease;
 }
 
 .button-primary:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 10px 25px rgba(168, 85, 247, 0.3);
+  transform: translateY(-1px) scale(1.01);
+  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
 }
 
 .button-primary:hover::before {
@@ -931,24 +927,24 @@ body {
 }
 
 .button-primary:active {
-  transform: translateY(0) scale(0.98);
+  transform: translateY(0) scale(0.99);
   transition-duration: 0.1s;
 }
 
-/* Card hover effects */
+/* Card hover effects - subtle and professional */
 .card-hover {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform, box-shadow;
 }
 
 .card-hover:hover {
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* Navigation hover effects */
+/* Navigation hover effects - clean and responsive */
 .nav-item {
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform, background-color;
 }
 
@@ -959,6 +955,98 @@ body {
 .nav-item:active {
   transform: translateY(0);
   transition-duration: 0.1s;
+}
+
+/* Film card hover - natural and smooth */
+.film-card {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, box-shadow;
+}
+
+.film-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* Film poster hover - subtle scale */
+.film-poster {
+  transition: transform 0.2s ease;
+}
+
+.film-card:hover .film-poster {
+  transform: scale(1.02);
+}
+
+/* Film overlay - smooth fade */
+.film-overlay {
+  transition: opacity 0.2s ease;
+}
+
+.film-card:hover .film-overlay {
+  opacity: 1;
+}
+
+/* Search form - smooth focus */
+.search-form {
+  transition: transform 0.15s ease;
+}
+
+.search-form:focus-within {
+  transform: scale(1.01);
+}
+
+/* Logo hover - gentle animation */
+.logo-icon {
+  transition: transform 0.15s ease;
+}
+
+.logo-icon:hover {
+  transform: scale(1.03);
+}
+
+/* User buttons - consistent hover */
+.user-button,
+.mobile-user-button,
+.mobile-nav-item,
+.mobile-close-button {
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.user-button:hover,
+.mobile-user-button:hover,
+.mobile-nav-item:hover,
+.mobile-close-button:hover {
+  transform: translateY(-1px);
+}
+
+/* Mobile menu - smooth slide */
+.mobile-menu {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Header scroll - smooth transition */
+.header {
+  transition: all 0.2s ease;
+}
+
+/* Prevent layout shifts */
+.layout-stable {
+  contain: layout style paint;
+}
+
+/* Disable transitions on touch devices for better performance */
+@media (hover: none) and (pointer: coarse) {
+  .hover-smooth:hover,
+  .button-primary:hover,
+  .card-hover:hover,
+  .nav-item:hover,
+  .film-card:hover {
+    transform: none;
+  }
+  
+  .button-primary:active {
+    transform: scale(0.98);
+  }
 }
 
 /* ===== CLEAN POSITIONING SYSTEM ===== */
@@ -1537,21 +1625,22 @@ button, a, [role="button"], [role="link"] {
 /* Ensure buttons are above other elements */
 .z-button {
   pointer-events: auto !important;
-  cursor: pointer !important;
   position: relative;
 }
 
-/* Fix hover states */
+/* Fix hover states to be smooth and consistent */
 button:hover, a:hover, [role="button"]:hover, [role="link"]:hover {
   pointer-events: auto !important;
+  transform: none !important; /* Reset transform to prevent conflicts */
 }
 
 /* Fix active states */
 button:active, a:active, [role="button"]:active, [role="link"]:active {
   pointer-events: auto !important;
+  transform: none !important; /* Reset transform to prevent conflicts */
 }
 
-/* Fix focus states */
+/* Fix focus states for accessibility */
 button:focus, a:focus, [role="button"]:focus, [role="link"]:focus {
   pointer-events: auto !important;
   outline: 2px solid rgba(139, 92, 246, 0.5);
@@ -1565,7 +1654,7 @@ button:disabled, a.disabled {
   opacity: 0.5;
 }
 
-/* Ensure clickable areas are accessible */
+/* Ensure clickable areas are accessible and solid */
 .clickable-area {
   min-height: 44px;
   min-width: 44px;
@@ -1574,30 +1663,131 @@ button:disabled, a.disabled {
   justify-content: center;
   pointer-events: auto !important;
   cursor: pointer !important;
+  position: relative;
+  user-select: none;
 }
 
-/* Fix overlay transparency issues */
-.overlay-fix {
-  pointer-events: none !important;
+/* Prevent any content from blocking interactions */
+.content-wrapper {
+  position: relative;
+  z-index: 1;
 }
 
-.overlay-fix > * {
+.interactive-content {
+  position: relative;
+  z-index: 10;
   pointer-events: auto !important;
 }
 
-/* Fix film card clickability */
-.film-card {
-  pointer-events: auto !important;
-  cursor: pointer !important;
-}
-
+/* Film card specific fixes */
+.film-card,
 .film-card * {
-  pointer-events: none !important;
+  pointer-events: auto !important;
 }
 
 .film-card:hover,
 .film-card:focus {
   pointer-events: auto !important;
+}
+
+/* Navigation specific fixes */
+.nav-item,
+.nav-item * {
+  pointer-events: auto !important;
+}
+
+/* Search form fixes */
+.search-form,
+.search-form * {
+  pointer-events: auto !important;
+}
+
+/* Mobile menu fixes */
+.mobile-menu-overlay,
+.mobile-menu-overlay * {
+  pointer-events: auto !important;
+}
+
+/* Header fixes */
+.header,
+.header * {
+  pointer-events: auto !important;
+}
+
+/* Prevent FOUC (Flash of Unstyled Content) */
+.no-fouc {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.no-fouc.loaded {
+  opacity: 1;
+}
+
+/* Smooth loading states */
+.loading-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Ensure consistent spacing and alignment */
+.interaction-safe {
+  padding: 0.5rem;
+  margin: 0.25rem;
+  border-radius: 0.5rem;
+}
+
+/* Professional focus indicators */
+.focus-visible:focus {
+  outline: 2px solid rgba(139, 92, 246, 0.6);
+  outline-offset: 2px;
+  border-radius: 0.25rem;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .button-primary:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  }
+  
+  .film-card:hover {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .button-primary:hover,
+  .card-hover:hover,
+  .nav-item:hover,
+  .film-card:hover {
+    transform: none !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  button, a {
+    color: black !important;
+    background: white !important;
+    border: 1px solid black !important;
+  }
 }
 
 /* Fix navigation clickability */
