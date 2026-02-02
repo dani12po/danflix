@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -24,7 +24,11 @@ export const metadata: Metadata = {
     title: "StreamFlix - Watch Movies & Series Online",
     description: "Stream your favorite movies and series in HD quality.",
   },
-  viewport: "width=device-width, initial-scale=1",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
   themeColor: "#0f172a",
 };
 

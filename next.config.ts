@@ -5,7 +5,6 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ['lucide-react']
   },
   images: {
-    domains: ['zeldvorik.ru'],
     remotePatterns: [
       {
         protocol: 'https',
@@ -14,6 +13,9 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
     ],
+  },
+  turbopack: {
+    root: __dirname,
   },
 };
 
