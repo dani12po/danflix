@@ -40,12 +40,12 @@ export default function FilmCard({ film, onClick, index = 0 }: FilmCardProps) {
         }
       }}
     >
-      {/* Enhanced Card Structure */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 border border-purple-500/20 hover:border-purple-500/50 transition-all duration-500 shadow-xl hover:shadow-2xl hover:shadow-purple-500/20">
+      {/* Enhanced Card Structure with New Theme */}
+      <div className="card card-glass overflow-hidden group hover:shadow-gold">
         {/* Poster Container */}
         <div className="relative aspect-[2/3] overflow-hidden">
           {/* Enhanced Background Gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-80 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary-dark via-transparent to-transparent opacity-90 z-10" />
           
           {/* Poster Image */}
           {film.poster ? (
@@ -63,10 +63,10 @@ export default function FilmCard({ film, onClick, index = 0 }: FilmCardProps) {
           ) : null}
           
           {/* Enhanced Poster Placeholder */}
-          <div className="w-full h-full bg-gradient-to-br from-purple-600/20 via-pink-600/20 to-purple-600/20 flex items-center justify-center">
+          <div className="w-full h-full bg-gradient-to-br from-primary-medium to-primary-light flex items-center justify-center">
             <div className="relative">
-              <Film className="w-20 h-20 text-purple-400/30" />
-              <div className="absolute inset-0 bg-purple-400/20 rounded-full blur-xl animate-pulse" />
+              <Film className="w-20 h-20 text-accent-gold/30" />
+              <div className="absolute inset-0 bg-accent-gold/20 rounded-full blur-xl animate-pulse" />
             </div>
           </div>
 
@@ -75,62 +75,62 @@ export default function FilmCard({ film, onClick, index = 0 }: FilmCardProps) {
             initial={{ opacity: 0 }}
             whileHover={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
-            className="absolute inset-0 z-20 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex items-center justify-center"
+            className="absolute inset-0 z-20 bg-gradient-to-t from-primary-dark/95 via-primary-medium/50 to-transparent flex items-center justify-center"
           >
             <div className="flex flex-col items-center gap-4 text-center">
               <motion.div
                 initial={{ scale: 0.8, opacity: 0 }}
                 whileHover={{ scale: 1, opacity: 1 }}
-                className="w-16 h-16 bg-gradient-to-br from-purple-600 to-pink-600 rounded-full flex items-center justify-center shadow-2xl"
+                className="w-16 h-16 bg-gradient-to-br from-accent-gold to-accent-gold-dark rounded-full flex items-center justify-center shadow-gold"
               >
-                <Play className="w-8 h-8 text-white ml-1" />
+                <Play className="w-8 h-8 text-primary-dark ml-1" />
               </motion.div>
               <motion.div
                 initial={{ y: 10, opacity: 0 }}
                 whileHover={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.1 }}
               >
-                <span className="text-white font-bold text-lg">Watch Now</span>
-                <span className="text-gray-300 text-sm block mt-1">Click to play</span>
+                <span className="text-primary font-bold text-lg">Watch Now</span>
+                <span className="text-secondary text-sm block mt-1">Click to play</span>
               </motion.div>
             </div>
           </motion.div>
 
           {/* Enhanced Badges */}
           <div className="absolute top-3 left-3 z-10">
-            <div className="bg-gradient-to-r from-purple-600 to-pink-600 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-lg">
-              <span className="text-xs text-white font-bold uppercase tracking-wide">
+            <div className="bg-gradient-to-r from-accent-gold to-accent-gold-dark backdrop-blur-sm px-3 py-1.5 rounded-full shadow-gold">
+              <span className="text-xs text-primary-dark font-bold uppercase tracking-wide">
                 {film.type === 'movie' ? 'Movie' : 'TV Series'}
               </span>
             </div>
           </div>
           
           <div className="absolute top-3 right-3 z-10">
-            <div className="bg-black/70 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1.5">
-              <Star className="w-3.5 h-3.5 text-yellow-400 fill-yellow-400" />
-              <span className="text-xs text-white font-bold">{film.rating}</span>
+            <div className="bg-primary-dark/80 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1.5 border border-accent-gold/30">
+              <Star className="w-3.5 h-3.5 text-accent-gold fill-accent-gold" />
+              <span className="text-xs text-primary font-bold">{film.rating}</span>
             </div>
           </div>
 
           {/* Genre Badge */}
           {film.genre && (
             <div className="absolute bottom-3 left-3 z-10">
-              <div className="bg-black/60 backdrop-blur-sm px-2 py-1 rounded-lg">
-                <span className="text-xs text-gray-300 font-medium">{film.genre}</span>
+              <div className="bg-primary-medium/80 backdrop-blur-sm px-2 py-1 rounded-lg border border-accent-gold/20">
+                <span className="text-xs text-secondary font-medium">{film.genre}</span>
               </div>
             </div>
           )}
         </div>
 
         {/* Enhanced Film Info */}
-        <div className="p-4 bg-gradient-to-t from-slate-900 to-slate-800">
-          <h3 className="font-bold text-white mb-3 line-clamp-2 leading-tight text-lg group-hover:text-purple-300 transition-colors">
+        <div className="p-4 bg-gradient-to-t from-primary-medium to-primary-light">
+          <h3 className="font-bold text-primary mb-3 line-clamp-2 leading-tight text-lg group-hover:text-accent-gold transition-colors">
             {film.title}
           </h3>
           <div className="flex items-center justify-between text-sm">
-            <div className="flex items-center gap-2 text-gray-400">
+            <div className="flex items-center gap-2 text-secondary">
               <div className="flex items-center gap-1">
-                <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
+                <Star className="w-4 h-4 text-accent-gold fill-accent-gold" />
                 <span className="font-medium">{film.rating}</span>
               </div>
               <div className="flex items-center gap-1">
@@ -139,14 +139,14 @@ export default function FilmCard({ film, onClick, index = 0 }: FilmCardProps) {
               </div>
             </div>
             <div className="flex items-center gap-1">
-              <Play className="w-4 h-4 text-purple-400" />
-              <span className="text-purple-400 text-xs font-medium">Play</span>
+              <Play className="w-4 h-4 text-accent-gold" />
+              <span className="text-accent-gold text-xs font-medium">Play</span>
             </div>
           </div>
         </div>
 
         {/* Shimmer Effect on Hover */}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent-gold/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 pointer-events-none" />
       </div>
     </motion.div>
   );

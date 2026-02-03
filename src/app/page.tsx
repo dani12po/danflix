@@ -50,22 +50,22 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white">
+    <div className="min-h-screen bg-primary text-primary">
       <Navigation />
       
       <main className="main-content">
-        {/* Hero Section - Enhanced */}
+        {/* Hero Section - Enhanced with New Theme */}
         <section className="hero-section relative">
           {/* Background Video/Image */}
           <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-900/40 via-slate-900/60 to-pink-900/40" />
+            <div className="absolute inset-0 bg-gradient-to-r from-primary-medium via-primary-dark to-primary-light opacity-40" />
             <div className="absolute inset-0 bg-[url('https://picsum.photos/1920/1080?random=hero')] bg-cover bg-center opacity-30" />
           </div>
           
           {/* Animated Background Elements */}
           <div className="absolute inset-0 z-0">
-            <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl animate-pulse" />
-            <div className="absolute bottom-20 right-10 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl animate-pulse delay-1000" />
+            <div className="absolute top-20 left-10 w-72 h-72 bg-accent-gold/10 rounded-full blur-3xl animate-pulse" />
+            <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent-gold/10 rounded-full blur-3xl animate-pulse delay-1000" />
           </div>
           
           <div className="hero-content relative z-10">
@@ -82,8 +82,8 @@ export default function Home() {
                 transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
                 className="mb-8 inline-block"
               >
-                <div className="w-24 h-24 mx-auto bg-gradient-to-br from-purple-600 to-pink-600 rounded-2xl flex items-center justify-center shadow-2xl">
-                  <Play className="w-12 h-12 text-white ml-1" />
+                <div className="w-24 h-24 mx-auto bg-gradient-to-br from-accent-gold to-accent-gold-dark rounded-2xl flex items-center justify-center shadow-gold">
+                  <Play className="w-12 h-12 text-primary-dark ml-1" />
                 </div>
               </motion.div>
               
@@ -92,9 +92,9 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-6"
+                className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-6 font-secondary"
               >
-                <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent animate-gradient bg-300">
+                <span className="text-gradient">
                   StreamFlix
                 </span>
               </motion.h1>
@@ -104,7 +104,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
-                className="text-xl md:text-2xl lg:text-3xl text-gray-200 mb-4 max-w-3xl mx-auto font-light"
+                className="text-xl md:text-2xl lg:text-3xl text-secondary mb-4 max-w-3xl mx-auto font-light"
               >
                 Watch Movies & Series Online
               </motion.p>
@@ -116,13 +116,13 @@ export default function Home() {
                 transition={{ delay: 0.8 }}
                 className="flex flex-wrap justify-center gap-3 mb-8"
               >
-                <span className="px-4 py-2 bg-purple-500/20 backdrop-blur-sm border border-purple-500/30 rounded-full text-purple-300 text-sm font-medium">
+                <span className="px-4 py-2 bg-accent-gold/20 backdrop-blur-sm border border-accent-gold/30 rounded-full text-accent-gold text-sm font-medium">
                   🎬 Unlimited Movies
                 </span>
-                <span className="px-4 py-2 bg-pink-500/20 backdrop-blur-sm border border-pink-500/30 rounded-full text-pink-300 text-sm font-medium">
+                <span className="px-4 py-2 bg-accent-gold/20 backdrop-blur-sm border border-accent-gold/30 rounded-full text-accent-gold text-sm font-medium">
                   📺 TV Series
                 </span>
-                <span className="px-4 py-2 bg-blue-500/20 backdrop-blur-sm border border-blue-500/30 rounded-full text-blue-300 text-sm font-medium">
+                <span className="px-4 py-2 bg-accent-gold/20 backdrop-blur-sm border border-accent-gold/30 rounded-full text-accent-gold text-sm font-medium">
                   🎌 Anime Collection
                 </span>
               </motion.div>
@@ -132,7 +132,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1 }}
-                whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(168, 85, 247, 0.4)" }}
+                whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(244, 196, 48, 0.4)" }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => {
                   if (trending.length > 0) {
@@ -141,15 +141,14 @@ export default function Home() {
                     router.push('/movies');
                   }
                 }}
-                className="group relative bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-8 md:px-12 py-4 md:py-5 rounded-full font-bold text-lg md:text-xl transition-all duration-300 shadow-2xl min-h-[56px] md:min-h-[64px] cursor-pointer overflow-hidden"
+                className="btn btn-primary text-lg md:text-xl min-h-[56px] md:min-h-[64px] px-8 md:px-12 py-4 md:py-5 font-bold"
                 role="button"
                 aria-label="Start watching movies and series"
               >
-                <span className="relative z-10 flex items-center gap-3">
+                <span className="flex items-center gap-3">
                   Start Watching
                   <Play className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-700 to-pink-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </motion.button>
             </motion.div>
           </div>
@@ -158,26 +157,26 @@ export default function Home() {
         {/* Enhanced Content Sections */}
         <div className="content-section relative">
           {/* Background Pattern */}
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-900/5 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary-medium/5 to-transparent pointer-events-none" />
           
           {loading ? (
             <div className="loading-container">
               <div className="relative">
-                <div className="animate-spin rounded-full h-16 w-16 border-4 border-purple-600/20 border-t-purple-600 mx-auto"></div>
-                <div className="absolute inset-0 rounded-full bg-purple-600/10 blur-xl animate-pulse" />
+                <div className="animate-spin rounded-full h-16 w-16 border-4 border-accent-gold/20 border-t-accent-gold mx-auto"></div>
+                <div className="absolute inset-0 rounded-full bg-accent-gold/10 blur-xl animate-pulse" />
               </div>
-              <p className="mt-6 text-gray-300 text-lg font-medium">Loading amazing content...</p>
+              <p className="mt-6 text-secondary text-lg font-medium">Loading amazing content...</p>
             </div>
           ) : error ? (
             <div className="error-container max-w-md mx-auto">
-              <div className="bg-red-500/10 border border-red-500/20 rounded-2xl p-8 text-center">
-                <div className="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="bg-error/10 border border-error/20 rounded-2xl p-8 text-center">
+                <div className="w-16 h-16 bg-error/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-2xl">⚠️</span>
                 </div>
-                <p className="text-red-300 mb-6">{error}</p>
+                <p className="text-error mb-6">{error}</p>
                 <button 
                   onClick={loadContent}
-                  className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-8 py-3 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 cursor-pointer"
+                  className="btn btn-primary"
                   role="button"
                   aria-label="Try loading content again"
                 >
@@ -197,14 +196,14 @@ export default function Home() {
                 >
                   <div className="section-header mb-8">
                     <div className="flex items-center justify-center gap-4 mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-purple-600 to-pink-600 rounded-xl flex items-center justify-center">
-                        <TrendingUp className="w-6 h-6 text-white" />
+                      <div className="w-12 h-12 bg-gradient-to-br from-accent-gold to-accent-gold-dark rounded-xl flex items-center justify-center">
+                        <TrendingUp className="w-6 h-6 text-primary-dark" />
                       </div>
-                      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gradient font-secondary">
                         Trending Now
                       </h2>
                     </div>
-                    <p className="text-gray-400 text-center max-w-2xl mx-auto">
+                    <p className="text-secondary text-center max-w-2xl mx-auto">
                       Discover the most popular movies and series everyone is talking about
                     </p>
                   </div>
@@ -231,14 +230,14 @@ export default function Home() {
                 >
                   <div className="section-header mb-8">
                     <div className="flex items-center justify-center gap-4 mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-red-600 to-orange-600 rounded-xl flex items-center justify-center">
-                        <FilmIcon className="w-6 h-6 text-white" />
+                      <div className="w-12 h-12 bg-gradient-to-br from-accent-gold to-accent-gold-dark rounded-xl flex items-center justify-center">
+                        <FilmIcon className="w-6 h-6 text-primary-dark" />
                       </div>
-                      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">
+                      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gradient font-secondary">
                         Indonesian Movies
                       </h2>
                     </div>
-                    <p className="text-gray-400 text-center max-w-2xl mx-auto">
+                    <p className="text-secondary text-center max-w-2xl mx-auto">
                       Explore the best Indonesian cinema from local talents
                     </p>
                   </div>
@@ -265,14 +264,14 @@ export default function Home() {
                 >
                   <div className="section-header mb-8">
                     <div className="flex items-center justify-center gap-4 mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-xl flex items-center justify-center">
-                        <Tv className="w-6 h-6 text-white" />
+                      <div className="w-12 h-12 bg-gradient-to-br from-accent-gold to-accent-gold-dark rounded-xl flex items-center justify-center">
+                        <Tv className="w-6 h-6 text-primary-dark" />
                       </div>
-                      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gradient font-secondary">
                         K-Drama
                       </h2>
                     </div>
-                    <p className="text-gray-400 text-center max-w-2xl mx-auto">
+                    <p className="text-secondary text-center max-w-2xl mx-auto">
                       Get hooked on the latest Korean dramas and romantic stories
                     </p>
                   </div>
@@ -299,14 +298,14 @@ export default function Home() {
                 >
                   <div className="section-header mb-8">
                     <div className="flex items-center justify-center gap-4 mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-pink-600 to-purple-600 rounded-xl flex items-center justify-center">
-                        <Gamepad2 className="w-6 h-6 text-white" />
+                      <div className="w-12 h-12 bg-gradient-to-br from-accent-gold to-accent-gold-dark rounded-xl flex items-center justify-center">
+                        <Gamepad2 className="w-6 h-6 text-primary-dark" />
                       </div>
-                      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">
+                      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gradient font-secondary">
                         Anime
                       </h2>
                     </div>
-                    <p className="text-gray-400 text-center max-w-2xl mx-auto">
+                    <p className="text-secondary text-center max-w-2xl mx-auto">
                       Dive into the world of Japanese animation and adventure
                     </p>
                   </div>
@@ -330,16 +329,16 @@ export default function Home() {
                 transition={{ duration: 0.6, delay: 0.8 }}
                 className="mt-20"
               >
-                <div className="bg-gradient-to-r from-purple-900/20 to-pink-900/20 backdrop-blur-lg border border-purple-500/20 rounded-3xl p-12 text-center">
-                  <h3 className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                <div className="card-glass p-12 text-center">
+                  <h3 className="text-2xl md:text-3xl font-bold mb-4 text-gradient font-secondary">
                     Ready for more?
                   </h3>
-                  <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
+                  <p className="text-secondary mb-8 max-w-2xl mx-auto">
                     Explore our full collection of movies, series, and anime. New content added daily!
                   </p>
                   <button
                     onClick={() => router.push('/movies')}
-                    className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 px-8 py-4 rounded-full font-semibold transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105"
+                    className="btn btn-primary"
                   >
                     Browse All Content
                   </button>

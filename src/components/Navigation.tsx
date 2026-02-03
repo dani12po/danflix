@@ -51,25 +51,25 @@ export default function Navigation({ onSearch }: NavigationProps) {
 
   return (
     <>
-      {/* Navigation Bar - Simplified Structure */}
-      <header className={`header z-header ${isScrolled ? 'glass-dark border-b border-white/10' : 'bg-transparent'}`}>
+      {/* Navigation Bar - Enhanced with New Theme */}
+      <header className={`header z-header ${isScrolled ? 'glass-dark' : ''}`}>
         <div className="header-content">
-          {/* Logo - Simplified */}
+          {/* Logo - Enhanced */}
           <Link 
             href="/"
-            className="flex items-center gap-2 group p-2 rounded-lg hover:bg-white/10 transition-all min-h-[44px] text-overflow-fix"
+            className="flex items-center gap-3 group p-3 rounded-xl hover:bg-white/10 transition-all min-h-[48px] text-overflow-fix"
             aria-label="StreamFlix Home"
           >
-            <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0">
-              <Film className="w-5 h-5 text-white" />
+            <div className="w-10 h-10 bg-gradient-to-br from-accent-gold to-accent-gold-dark rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform shadow-gold">
+              <Film className="w-6 h-6 text-primary-dark" />
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent hidden sm:block whitespace-nowrap">
+            <span className="text-2xl font-black text-gradient hidden sm:block whitespace-nowrap font-secondary">
               StreamFlix
             </span>
           </Link>
 
-          {/* Desktop Navigation - Simplified */}
-          <nav className="hidden lg:flex items-center gap-8" role="navigation" aria-label="Main navigation">
+          {/* Desktop Navigation - Enhanced */}
+          <nav className="hidden lg:flex items-center gap-6" role="navigation" aria-label="Main navigation">
             {navItems.map((item) => {
               const Icon = item.icon;
               return (
@@ -77,69 +77,69 @@ export default function Navigation({ onSearch }: NavigationProps) {
                   key={item.href}
                   href={item.href}
                   onClick={() => handleNavClick(item.href)}
-                  className={`flex items-center gap-2 px-4 py-3 rounded-lg transition-all cursor-pointer min-h-[44px] whitespace-nowrap ${
+                  className={`flex items-center gap-2 px-4 py-3 rounded-xl transition-all cursor-pointer min-h-[48px] whitespace-nowrap font-medium ${
                     isActive(item.href)
-                      ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300'
-                      : 'text-gray-300 hover:text-white hover:bg-white/10'
+                      ? 'bg-gradient-to-r from-accent-gold/20 to-accent-gold-dark/20 text-accent-gold border border-accent-gold/30'
+                      : 'text-secondary hover:text-primary hover:bg-white/10'
                   }`}
                   aria-label={`Navigate to ${item.label}`}
                   aria-current={isActive(item.href) ? 'page' : undefined}
                 >
-                  <Icon className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
-                  <span className="font-medium">{item.label}</span>
+                  <Icon className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+                  <span>{item.label}</span>
                 </Link>
               );
             })}
           </nav>
 
-          {/* Search Bar - Simplified */}
+          {/* Search Bar - Enhanced */}
           <div className="hidden md:block flex-1 max-w-md mx-4 lg:mx-8">
             <form onSubmit={handleSearch} className="relative" role="search">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted" />
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search movies, series, anime..."
-                  className="w-full pl-10 pr-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:bg-white/20 transition-all min-h-[44px] text-overflow-fix"
+                  className="input pl-12 pr-4 bg-surface border-secondary"
                   aria-label="Search content"
                 />
               </div>
             </form>
           </div>
 
-          {/* User Menu - Simplified */}
-          <div className="hidden lg:flex items-center gap-4">
+          {/* User Menu - Enhanced */}
+          <div className="hidden lg:flex items-center gap-3">
             <button 
               onClick={() => router.push('/profile')}
-              className="p-3 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all cursor-pointer min-h-[44px] flex items-center justify-center"
+              className="btn btn-ghost p-3 rounded-xl hover:bg-white/10"
               aria-label="User profile"
             >
-              <User className="w-5 h-5 flex-shrink-0" />
+              <User className="w-5 h-5" />
             </button>
             <button 
               onClick={() => router.push('/settings')}
-              className="p-3 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all cursor-pointer min-h-[44px] flex items-center justify-center"
+              className="btn btn-ghost p-3 rounded-xl hover:bg-white/10"
               aria-label="Settings"
             >
-              <Settings className="w-5 h-5 flex-shrink-0" />
+              <Settings className="w-5 h-5" />
             </button>
           </div>
 
-          {/* Mobile Menu Button - Simplified */}
+          {/* Mobile Menu Button - Enhanced */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-3 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all cursor-pointer min-h-[44px] flex items-center justify-center"
+            className="lg:hidden btn btn-ghost p-3 rounded-xl hover:bg-white/10"
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMenuOpen}
           >
-            {isMenuOpen ? <X className="w-6 h-6 flex-shrink-0" /> : <Menu className="w-6 h-6 flex-shrink-0" />}
+            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </header>
 
-      {/* Mobile Menu - Simplified Structure */}
+      {/* Mobile Menu - Enhanced with New Theme */}
       {isMenuOpen && (
         <div className="lg:hidden fixed inset-0 z-modal">
           {/* Backdrop */}
@@ -150,20 +150,20 @@ export default function Navigation({ onSearch }: NavigationProps) {
           />
           
           {/* Menu Panel */}
-          <div className="absolute top-0 right-0 h-full w-80 max-w-[85vw] bg-slate-900/95 backdrop-blur-lg overflow-y-auto">
+          <div className="absolute top-0 right-0 h-full w-80 max-w-[85vw] bg-surface backdrop-blur-lg overflow-y-auto border-l border-gold">
             {/* Header */}
-            <div className="flex items-center justify-between p-4 border-b border-white/10">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
-                  <Film className="w-5 h-5 text-white" />
+            <div className="flex items-center justify-between p-4 border-b border-secondary">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-gradient-to-br from-accent-gold to-accent-gold-dark rounded-xl flex items-center justify-center shadow-gold">
+                  <Film className="w-6 h-6 text-primary-dark" />
                 </div>
-                <span className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                <span className="text-xl font-black text-gradient font-secondary">
                   StreamFlix
                 </span>
               </div>
               <button
                 onClick={() => setIsMenuOpen(false)}
-                className="p-2 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all cursor-pointer"
+                className="btn btn-ghost p-2 rounded-lg"
                 aria-label="Close menu"
               >
                 <X className="w-5 h-5" />
@@ -183,77 +183,58 @@ export default function Navigation({ onSearch }: NavigationProps) {
                         setIsMenuOpen(false);
                         handleNavClick(item.href);
                       }}
-                      className={`flex items-center gap-3 px-4 py-4 rounded-lg transition-all cursor-pointer min-h-[44px] whitespace-nowrap ${
+                      className={`flex items-center gap-3 px-4 py-4 rounded-xl transition-all cursor-pointer min-h-[48px] whitespace-nowrap font-medium ${
                         isActive(item.href)
-                          ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300'
-                          : 'text-gray-300 hover:text-white hover:bg-white/10'
+                          ? 'bg-gradient-to-r from-accent-gold/20 to-accent-gold-dark/20 text-accent-gold border border-accent-gold/30'
+                          : 'text-secondary hover:text-primary hover:bg-white/10'
                       }`}
                       aria-label={`Navigate to ${item.label}`}
                       aria-current={isActive(item.href) ? 'page' : undefined}
                     >
                       <Icon className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
-                      <span className="font-medium">{item.label}</span>
+                      <span>{item.label}</span>
                     </Link>
                   );
                 })}
               </div>
-            </nav>
 
-            {/* Search */}
-            <div className="p-4 border-t border-white/10">
-              <form onSubmit={handleSearch} className="relative" role="search">
-                <div className="relative">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                  <input
-                    type="text"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    placeholder="Search movies, series, anime..."
-                    className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:bg-white/20 transition-all min-h-[44px] text-overflow-fix"
-                    aria-label="Search content"
-                  />
-                </div>
-              </form>
-            </div>
-
-            {/* User Menu */}
-            <div className="p-4 border-t border-white/10">
-              <div className="space-y-2">
-                <button 
-                  onClick={() => {
-                    setIsMenuOpen(false);
-                    router.push('/profile');
-                  }}
-                  className="w-full flex items-center gap-3 px-4 py-4 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all cursor-pointer min-h-[44px] whitespace-nowrap"
-                  aria-label="User profile"
-                >
-                  <User className="w-5 h-5 flex-shrink-0" />
-                  <span>Profile</span>
-                </button>
-                <button 
-                  onClick={() => {
-                    setIsMenuOpen(false);
-                    router.push('/settings');
-                  }}
-                  className="w-full flex items-center gap-3 px-4 py-4 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all cursor-pointer min-h-[44px] whitespace-nowrap"
-                  aria-label="Settings"
-                >
-                  <Settings className="w-5 h-5 flex-shrink-0" />
-                  <span>Settings</span>
-                </button>
-                <button 
-                  onClick={() => {
-                    setIsMenuOpen(false);
-                    console.log('Logout clicked');
-                  }}
-                  className="w-full flex items-center gap-3 px-4 py-4 text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all cursor-pointer min-h-[44px] whitespace-nowrap"
-                  aria-label="Logout"
-                >
-                  <LogOut className="w-5 h-5 flex-shrink-0" />
-                  <span>Logout</span>
-                </button>
+              {/* Mobile Search */}
+              <div className="mt-6">
+                <form onSubmit={handleSearch} className="relative" role="search">
+                  <div className="relative">
+                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted" />
+                    <input
+                      type="text"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      placeholder="Search movies, series, anime..."
+                      className="input pl-12 pr-4 bg-surface-light border-secondary"
+                      aria-label="Search content"
+                    />
+                  </div>
+                </form>
               </div>
-            </div>
+
+              {/* User Actions */}
+              <div className="mt-6 space-y-2">
+                <Link
+                  href="/profile"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="flex items-center gap-3 px-4 py-4 rounded-xl transition-all cursor-pointer min-h-[48px] whitespace-nowrap font-medium text-secondary hover:text-primary hover:bg-white/10"
+                >
+                  <User className="w-5 h-5" />
+                  <span>Profile</span>
+                </Link>
+                <Link
+                  href="/settings"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="flex items-center gap-3 px-4 py-4 rounded-xl transition-all cursor-pointer min-h-[48px] whitespace-nowrap font-medium text-secondary hover:text-primary hover:bg-white/10"
+                >
+                  <Settings className="w-5 h-5" />
+                  <span>Settings</span>
+                </Link>
+              </div>
+            </nav>
           </div>
         </div>
       )}
