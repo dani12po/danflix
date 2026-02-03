@@ -47,9 +47,25 @@ export default function FilmCard({ film, onClick, index = 0 }: FilmCardProps) {
           {/* Background Gradient */}
           <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60" />
           
-          {/* Poster Placeholder */}
-          <div className="w-full h-full bg-slate-700 flex items-center justify-center">
-            <Film className="w-16 h-16 text-slate-600 flex-shrink-0" />
+          {/* Poster Image */}
+          {film.poster ? (
+            <img 
+              src={film.poster} 
+              alt={film.title}
+              className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              loading="lazy"
+              onError={(e) => {
+                // Fallback to placeholder if image fails to load
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+                target.nextElementSibling?.classList.remove('hidden');
+              }}
+            />
+          ) : null}
+          
+          {/* Poster Placeholder - Hidden if image exists */}
+          <div className="w-full h-full bg-gradient-to-br from-purple-600/20 to-pink-600/20 flex items-center justify-center">
+            <Film className="w-16 h-16 text-purple-400/50 flex-shrink-0" />
           </div>
 
           {/* Hover Overlay - Simplified */}

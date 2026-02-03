@@ -328,6 +328,63 @@ button, a, [role="button"], [role="link"] {
   z-index: 10;
 }
 
+/* ===== FILM CARD STYLES ===== */
+.film-card {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 1rem;
+}
+
+.film-card:hover {
+  z-index: 10;
+}
+
+/* Prevent content overlap */
+.film-grid > * {
+  position: relative;
+  z-index: 1;
+}
+
+.film-grid > *:hover {
+  z-index: 10;
+}
+
+/* ===== ANIMATION FIXES ===== */
+/* Smooth transitions for all interactive elements */
+* {
+  transition-property: transform, opacity, background-color, border-color, color, box-shadow !important;
+  transition-duration: 0.2s !important;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Disable transitions on reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* ===== LAYOUT FIXES ===== */
+/* Prevent content from being hidden behind header */
+.main-content {
+  padding-top: 64px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure proper stacking context */
+.content-section {
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+}
+
+.section-header {
+  position: relative;
+  z-index: 2;
+}
+
 /* ===== RESPONSIVE HELPERS ===== */
 @media (max-width: 639px) {
   .content-section {
