@@ -189,13 +189,6 @@ export class ApiService {
     );
   }
 
-  static async getAnime(page: number = 1): Promise<ApiResponse> {
-    return this.fetchWithCache<ApiResponse>(
-      `${BASE_URL}?action=anime&page=${page}`,
-      `anime-${page}`
-    );
-  }
-
   static async search(query: string, page: number = 1): Promise<ApiResponse> {
     return this.fetchWithCache<ApiResponse>(
       `${BASE_URL}?action=search&q=${encodeURIComponent(query)}&page=${page}`,
